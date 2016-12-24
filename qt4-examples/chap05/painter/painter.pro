@@ -11,3 +11,4 @@ INCLUDEPATH += .
 HEADERS += drawwidget.h painter.h
 SOURCES += drawwidget.cpp main.cpp painter.cpp
 TRANSLATIONS += painter_zh.ts
+QT += core gui widgets

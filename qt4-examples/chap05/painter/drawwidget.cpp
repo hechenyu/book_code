@@ -59,7 +59,7 @@ void DrawWidget::paintEvent(QPaintEvent *)
 
 void DrawWidget::resizeEvent(QResizeEvent * event)
 {
-//    if(height() > pix->height() || width() > pix->width())
+    if(height() > pix->height() || width() > pix->width())
     {
         QPixmap *newPix = new QPixmap(size());
         newPix->fill(Qt::white);

@@ -2,7 +2,12 @@
 #define PAINTER_H
 
 #include <QtGui>
+#include <QMainWindow>
 #include "drawwidget.h"
+
+class QToolButton;
+class QComboBox;
+class QSpinBox;
 
 class Painter : public QMainWindow
 {

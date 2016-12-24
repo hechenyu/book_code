@@ -1,4 +1,10 @@
 #include "painter.h"
+#include <QToolButton>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QToolBar>
+#include <QLabel>
+#include <QColorDialog>
 
 Painter::Painter(QWidget *parent)
 	: QMainWindow(parent)
@@ -25,11 +31,11 @@ void Painter::createToolBar()
     QToolBar *toolBar = addToolBar("Tool");
     QLabel *label1 = new QLabel(tr("style:"));
     styleComboBox = new QComboBox;
-    styleComboBox->addItem("SolidLine",Qt::SolidLine);
-    styleComboBox->addItem("DashLine",Qt::DashLine);
-    styleComboBox->addItem("DotLine",Qt::DotLine);
-    styleComboBox->addItem("DashDotLine",Qt::DashDotLine);
-    styleComboBox->addItem("DashDotDotLine",Qt::DashDotDotLine);
+    styleComboBox->addItem("SolidLine", (int) Qt::SolidLine);
+    styleComboBox->addItem("DashLine", (int) Qt::DashLine);
+    styleComboBox->addItem("DotLine", (int) Qt::DotLine);
+    styleComboBox->addItem("DashDotLine", (int) Qt::DashDotLine);
+    styleComboBox->addItem("DashDotDotLine", (int) Qt::DashDotDotLine);
     toolBar->addWidget(label1);
     toolBar->addWidget(styleComboBox);
     toolBar->addSeparator();
