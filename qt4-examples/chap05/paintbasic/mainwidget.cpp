@@ -1,5 +1,13 @@
 #include "mainwidget.h"
 
+#include <QComboBox>
+#include <QSpinBox>
+#include <QFrame>
+#include <QLabel>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QColorDialog>
+
 MainWidget::MainWidget(QWidget *parent)
 	: QWidget(parent)
 {
@@ -17,17 +25,17 @@ MainWidget::MainWidget(QWidget *parent)
     QLabel *label7 = new QLabel(tr("Brush:"));
 
     shapeComboBox = new QComboBox;
-    shapeComboBox->addItem(tr("Line"), PaintArea::Line);
-    shapeComboBox->addItem(tr("Polygon"), PaintArea::Polygon);
-    shapeComboBox->addItem(tr("Rectangle"), PaintArea::Rectangle);
-    shapeComboBox->addItem(tr("Round Rectangle"), PaintArea::RoundRect);
-    shapeComboBox->addItem(tr("Ellipse"), PaintArea::Ellipse);
-    shapeComboBox->addItem(tr("Path"), PaintArea::Path);    
-    shapeComboBox->addItem(tr("Polyline"), PaintArea::Polyline);
-    shapeComboBox->addItem(tr("Arc"), PaintArea::Arc);
-    shapeComboBox->addItem(tr("Points"), PaintArea::Points);
-    shapeComboBox->addItem(tr("Text"), PaintArea::Text);
-    shapeComboBox->addItem(tr("Pixmap"), PaintArea::Pixmap);
+    shapeComboBox->addItem(tr("Line"), (int) PaintArea::Line);
+    shapeComboBox->addItem(tr("Polygon"), (int) PaintArea::Polygon);
+    shapeComboBox->addItem(tr("Rectangle"), (int) PaintArea::Rectangle);
+    shapeComboBox->addItem(tr("Round Rectangle"), (int) PaintArea::RoundRect);
+    shapeComboBox->addItem(tr("Ellipse"), (int) PaintArea::Ellipse);
+    shapeComboBox->addItem(tr("Path"), (int) PaintArea::Path);    
+    shapeComboBox->addItem(tr("Polyline"), (int) PaintArea::Polyline);
+    shapeComboBox->addItem(tr("Arc"), (int) PaintArea::Arc);
+    shapeComboBox->addItem(tr("Points"), (int) PaintArea::Points);
+    shapeComboBox->addItem(tr("Text"), (int) PaintArea::Text);
+    shapeComboBox->addItem(tr("Pixmap"), (int) PaintArea::Pixmap);
     connect(shapeComboBox,SIGNAL(activated(int)),this,SLOT(slotShape(int)));
     
     widthSpinBox = new QSpinBox;
@@ -41,49 +49,49 @@ MainWidget::MainWidget(QWidget *parent)
     connect(colorPushButton,SIGNAL(clicked()),this,SLOT(slotPenColor()));
     
     penStyleComboBox = new QComboBox;
-    penStyleComboBox->addItem(tr("Solid"), Qt::SolidLine);
-    penStyleComboBox->addItem(tr("Dash"), Qt::DashLine);
-    penStyleComboBox->addItem(tr("Dot"), Qt::DotLine);
-    penStyleComboBox->addItem(tr("Dash Dot"), Qt::DashDotLine);
-    penStyleComboBox->addItem(tr("Dash Dot Dot"), Qt::DashDotDotLine);
-    penStyleComboBox->addItem(tr("None"), Qt::NoPen);
+    penStyleComboBox->addItem(tr("Solid"), (int) Qt::SolidLine);
+    penStyleComboBox->addItem(tr("Dash"), (int) Qt::DashLine);
+    penStyleComboBox->addItem(tr("Dot"), (int) Qt::DotLine);
+    penStyleComboBox->addItem(tr("Dash Dot"), (int) Qt::DashDotLine);
+    penStyleComboBox->addItem(tr("Dash Dot Dot"), (int) Qt::DashDotDotLine);
+    penStyleComboBox->addItem(tr("None"), (int) Qt::NoPen);
     connect(penStyleComboBox,SIGNAL(activated(int)),this,SLOT(slotPenStyle(int)));
     
     penCapComboBox = new QComboBox;
-    penCapComboBox->addItem(tr("Flat"), Qt::FlatCap);
-    penCapComboBox->addItem(tr("Square"), Qt::SquareCap);
-    penCapComboBox->addItem(tr("Round"), Qt::RoundCap);
+    penCapComboBox->addItem(tr("Flat"), (int) Qt::FlatCap);
+    penCapComboBox->addItem(tr("Square"), (int) Qt::SquareCap);
+    penCapComboBox->addItem(tr("Round"), (int) Qt::RoundCap);
     connect(penCapComboBox,SIGNAL(activated(int)),this,SLOT(slotPenCap(int)));
  
     penJoinComboBox = new QComboBox;
-    penJoinComboBox->addItem(tr("Miter"), Qt::MiterJoin);
-    penJoinComboBox->addItem(tr("Bevel"), Qt::BevelJoin);
-    penJoinComboBox->addItem(tr("Round"), Qt::RoundJoin);
+    penJoinComboBox->addItem(tr("Miter"), (int) Qt::MiterJoin);
+    penJoinComboBox->addItem(tr("Bevel"), (int) Qt::BevelJoin);
+    penJoinComboBox->addItem(tr("Round"), (int) Qt::RoundJoin);
     connect(penJoinComboBox,SIGNAL(activated(int)),this,SLOT(slotPenJoin(int)));
     
     brushStyleComboBox = new QComboBox;
     brushStyleComboBox->addItem(tr("Linear Gradient"),
-             Qt::LinearGradientPattern);
+             (int) Qt::LinearGradientPattern);
     brushStyleComboBox->addItem(tr("Radial Gradient"),
-             Qt::RadialGradientPattern);
+             (int) Qt::RadialGradientPattern);
     brushStyleComboBox->addItem(tr("Conical Gradient"),
-             Qt::ConicalGradientPattern);
-    brushStyleComboBox->addItem(tr("Texture"), Qt::TexturePattern);
-    brushStyleComboBox->addItem(tr("Solid"), Qt::SolidPattern);
-    brushStyleComboBox->addItem(tr("Horizontal"), Qt::HorPattern);
-    brushStyleComboBox->addItem(tr("Vertical"), Qt::VerPattern);
-    brushStyleComboBox->addItem(tr("Cross"), Qt::CrossPattern);
-    brushStyleComboBox->addItem(tr("Backward Diagonal"), Qt::BDiagPattern);
-    brushStyleComboBox->addItem(tr("Forward Diagonal"), Qt::FDiagPattern);
-    brushStyleComboBox->addItem(tr("Diagonal Cross"), Qt::DiagCrossPattern);
-    brushStyleComboBox->addItem(tr("Dense 1"), Qt::Dense1Pattern);
-    brushStyleComboBox->addItem(tr("Dense 2"), Qt::Dense2Pattern);
-    brushStyleComboBox->addItem(tr("Dense 3"), Qt::Dense3Pattern);
-    brushStyleComboBox->addItem(tr("Dense 4"), Qt::Dense4Pattern);
-    brushStyleComboBox->addItem(tr("Dense 5"), Qt::Dense5Pattern);
-    brushStyleComboBox->addItem(tr("Dense 6"), Qt::Dense6Pattern);
-    brushStyleComboBox->addItem(tr("Dense 7"), Qt::Dense7Pattern);
-    brushStyleComboBox->addItem(tr("None"), Qt::NoBrush);
+             (int) Qt::ConicalGradientPattern);
+    brushStyleComboBox->addItem(tr("Texture"), (int) Qt::TexturePattern);
+    brushStyleComboBox->addItem(tr("Solid"), (int) Qt::SolidPattern);
+    brushStyleComboBox->addItem(tr("Horizontal"), (int) Qt::HorPattern);
+    brushStyleComboBox->addItem(tr("Vertical"), (int) Qt::VerPattern);
+    brushStyleComboBox->addItem(tr("Cross"), (int) Qt::CrossPattern);
+    brushStyleComboBox->addItem(tr("Backward Diagonal"), (int) Qt::BDiagPattern);
+    brushStyleComboBox->addItem(tr("Forward Diagonal"), (int) Qt::FDiagPattern);
+    brushStyleComboBox->addItem(tr("Diagonal Cross"), (int) Qt::DiagCrossPattern);
+    brushStyleComboBox->addItem(tr("Dense 1"), (int) Qt::Dense1Pattern);
+    brushStyleComboBox->addItem(tr("Dense 2"), (int) Qt::Dense2Pattern);
+    brushStyleComboBox->addItem(tr("Dense 3"), (int) Qt::Dense3Pattern);
+    brushStyleComboBox->addItem(tr("Dense 4"), (int) Qt::Dense4Pattern);
+    brushStyleComboBox->addItem(tr("Dense 5"), (int) Qt::Dense5Pattern);
+    brushStyleComboBox->addItem(tr("Dense 6"), (int) Qt::Dense6Pattern);
+    brushStyleComboBox->addItem(tr("Dense 7"), (int) Qt::Dense7Pattern);
+    brushStyleComboBox->addItem(tr("None"), (int) Qt::NoBrush);
     connect(brushStyleComboBox,SIGNAL(activated(int)),this,SLOT(slotBrush(int)));
     
     // ²¼¾Ö

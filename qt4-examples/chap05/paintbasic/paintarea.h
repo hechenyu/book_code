@@ -2,6 +2,7 @@
 #define PAINTAREA_H
 
 #include <QtGui>
+#include <QWidget>
 
 class PaintArea : public QWidget
 {

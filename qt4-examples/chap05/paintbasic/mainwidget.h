@@ -2,7 +2,12 @@
 #define MAINWIDGET_H
 
 #include <QtGui>
+#include <QWidget>
 #include "paintarea.h"
+
+class QComboBox;
+class QSpinBox; 
+class QFrame; 
 
 class MainWidget : public QWidget
 {

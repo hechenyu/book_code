@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = paintbasic
 DEPENDPATH += .
 INCLUDEPATH += .
+QT += core gui widgets
 
 # Input
 HEADERS += mainwidget.h paintarea.h
