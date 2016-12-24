@@ -10,3 +10,4 @@ SOURCES       = diagramwindow.cpp \
                 propertiesdialog.cpp
 FORMS         = propertiesdialog.ui
 RESOURCES     = resources.qrc
+QT += core gui widgets
