@@ -128,10 +128,8 @@ void Node::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 QVariant Node::itemChange(GraphicsItemChange change,
                           const QVariant &value)
 {
-    if (change == ItemPositionHasChanged) {
-        foreach (Link *link, myLinks)
-            link->trackNodes();
-    }
+    foreach (Link *link, myLinks)
+        link->trackNodes();
     return QGraphicsItem::itemChange(change, value);
 }
 
