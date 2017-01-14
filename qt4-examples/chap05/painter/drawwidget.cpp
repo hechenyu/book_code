@@ -42,9 +42,11 @@ void DrawWidget::mouseMoveEvent(QMouseEvent * e)
     pen.setStyle((Qt::PenStyle)style);      	
     pen.setWidth(weight);
     pen.setColor(color);
+    painter->begin(pix);
     painter->setPen(pen);
     
     painter->drawLine(startPos,e->pos());
+    painter->end();
     startPos = e->pos();
     update();
     
