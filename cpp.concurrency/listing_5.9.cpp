@@ -18,7 +18,7 @@ void thread_1()
 void thread_2()
 {
     while(!sync1.load(std::memory_order_acquire));
-    sync2.store(std::memory_order_release);
+    sync2.store(true, std::memory_order_release);
 }
 
 void thread_3()
