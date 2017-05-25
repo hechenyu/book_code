@@ -1,9 +1,14 @@
 #!/usr/bin/env python
 # UDP Echo Server - Chapter 3 - udpechoserver.py
 import socket, traceback
+import sys
 
-host = ''                               # Bind to all interfaces
-port = 51423
+if len(sys.argv) != 3:
+    print "usage: udpechoserver02.py <hostname> <service>"
+    sys.exit(1)
+
+host = sys.argv[1]                               # Bind to all interfaces
+port = sys.argv[2]
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
