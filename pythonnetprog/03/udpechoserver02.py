@@ -8,7 +8,7 @@ if len(sys.argv) != 3:
     sys.exit(1)
 
 host = sys.argv[1]                               # Bind to all interfaces
-port = sys.argv[2]
+port = int(sys.argv[2])
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
